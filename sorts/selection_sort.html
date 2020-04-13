@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Selection sort</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+  /*
+    Selection sort - 
+    This algorithm divides the array into two parts:
+     - sorted (left) and
+     - unsorted (right) subarray.
+     It selects the smallest element from unsorted subarray
+     and places in the first position of that subarray (ascending order).
+     It repeatedly selects the next smallest element.
+
+    Best Case [ O(N2) ]. Also O(N) swaps.
+    Worst Case: Reversely sorted, and when inner loop makes maximum comparison. [ O(N2) ] . Also O(N) swaps.
+    Average Case: [ O(N2) ] . Also O(N) swaps.
+  */
+  const unsortedArray = [1, 32, 12, 14, 5, 6, 23, 19, 7]
+  const selectionSort = arr => {
+    console.log(arr)
+    for (let i = 0; i < arr.length; i++) {
+      let min_index = i
+      for (let j = i+1; j < arr.length; j++) {
+        if ( arr[j] < arr[min_index] ) {
+          min_index = j // Current minimum
+        }
+      }
+      let temp = arr[min_index]; 
+      arr[min_index] = arr[i]
+      arr[i] = temp
+    }
+    console.log(arr)
+  }
+  selectionSort(unsortedArray)
+  </script>
+</html>

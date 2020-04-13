@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Insertion sort</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+  /*
+    Insertion sort - 
+    This algorithm works the way we sort playing cards in our hands.
+    Pick element arr[i] and insert it into sorted sequence arr[0…i-1]
+
+    Time Complexity: O(n*2)
+    Best Case: O(n). Best case occurs when array is already sorted.
+    Worst Case: O(n*n). Worst case occurs when array is reverse sorted.
+  */
+  const unsortedArray = [1, 32, 12, 14, 5, 6, 23, 19, 7]
+  const insertionSort = arr => {
+    console.log([...arr])
+    for (let i = 1; i < arr.length; i++) {
+      let key = arr[i]
+      /* 
+        Move elements of arr[0..i-1],
+        that are greater than key,
+        to one position ahead of their current position
+      */
+      for (j = i - 1; j >= 0 && arr[j] > key; j--) { 
+        arr[j + 1] = arr[j]
+      }
+      arr[j + 1] = key
+    }
+    console.log(arr)
+  }
+  insertionSort(unsortedArray)
+  </script>
+</html>

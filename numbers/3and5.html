@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    function getSumIfMultiplesOf3And5(number){
+      var sum = 0, isOdd = false, num;
+      if(number > 0){
+        for (var i = 3; i < number; i++) {
+          if(i%5 === 0 ){
+            console.log(i);
+            sum += i;
+          } else if(i%3 === 0) {
+            console.log(i);
+            sum += i;
+          }
+        }
+      } else {
+        sum = "Invalid";
+      }
+
+      console.log("sum " + sum);
+    }
+
+    getSumIfMultiplesOf3And5(15);
+  </script>
+</html>

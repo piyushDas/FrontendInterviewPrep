@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    const inputArr = [1, [1, [1, 2], 6], 2, 3, 4]
+    const checkForFlat = arr => { 
+        for (const el of arr) {
+            if (typeof el === 'object') {
+                return true
+            }
+        }
+        return false
+    }
+    const flattenArr = arr => {
+        let returnValue
+        if (checkForFlat(arr)) {
+            returnValue = arr.flat()
+        } else {
+            return returnValue
+        }
+    }
+    flattenArr(inputArr)
+
+</script>
+</html>

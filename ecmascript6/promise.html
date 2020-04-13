@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Promise</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    /*
+      Reference - https://www.freecodecamp.org/news/how-javascript-promises-actually-work-from-the-inside-out-76698bb7210b/
+      A promise is an object which represents 
+      the result of an asynchronous operation 
+      which is either resolved or rejected (with a reason).
+
+      There are 3 states
+
+      - Fulfilled: onFulfilled() will be called (e.g., resolve() was called)
+      - Rejected: onRejected() will be called (e.g., reject() was called)
+      - Pending: not yet fulfilled or rejected
+    */
+
+    //Internally this is how it looks
+    function noop() {} 
+
+    function Promise(executor) {
+      if (typeof this !== 'object') {
+        throw new TypeError('Promises must be constructed via new');
+      }
+    if (typeof executor !== 'function') {
+      throw new TypeError('Promise constructor\'s argument is not a function');
+    }
+      this._deferredState = 0;
+      this._state = 0;  // 0, 1, 2
+      this._value = null;
+      this._deferreds = null;
+      if (executor === noop) return;
+      doResolve(executor, this);
+    }
+  </script>
+</html>

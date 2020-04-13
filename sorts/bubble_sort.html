@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bubble sort</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+  /*
+    bubble sort - 
+    This algorithm works by repeatedly swapping
+    the adjacent elements if they are in wrong order.
+
+    Always runs O(n^2) time even if the array is sorted.
+    It can be optimized by stopping the algorithm
+    if inner loop didn’t cause any swap
+
+    Best Case: O(n). Best case occurs when array is already sorted.
+    Worst Case: O(n*n). Worst case occurs when array is reverse sorted.
+  */
+  const unsortedArray = [1, 32, 12, 14, 5, 6, 23, 19, 7]
+  const bubbleSort = arr => {
+    console.log(arr)
+    let swapped = false
+    for (let i = 0; i < arr.length; i++){ 
+      swapped = false; 
+      for (let j = 0; j < arr.length - 1; j++){ 
+        if (arr[j] > arr[j + 1]){ 
+          // swap arr[j] and arr[j+1] 
+          temp = arr[j]; 
+          arr[j] = arr[j + 1]; 
+          arr[j + 1] = temp; 
+          swapped = true; 
+        } 
+      } 
+      /*
+        If no two elements were  
+        swapped by inner loop, then break 
+      */
+      if (swapped == false) {
+        break
+      } 
+    } 
+    console.log(arr)
+  }
+  bubbleSort(unsortedArray)
+  </script>
+</html>

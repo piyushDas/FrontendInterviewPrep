@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>0-1 Knapsack</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+  /*
+    Problem statement - given two integer arrays 
+    val[0..n-1] --> values and
+    wt[0..n-1] -->  weights
+    associated with n items respectively. 
+    Also given an integer W which represents knapsack capacity,
+    find out the maximum value subset of val[]
+    such that sum of the weights of this subset is smaller than or equal to W.
+  */
+  const knapSack = (W, wt, val) => { 
+    let i, w 
+    let K = []
+    // Build table K[][] in bottom up manner 
+    for (let i = 0; i <= val.length; i++) { 
+      K[i] = []
+      for (w = 0; w <= W; w++) {
+        if (i==0 || w==0){
+          K[i][w] = 0
+        } else if (wt[i-1] <= w) {
+          K[i][w] = Math.max(val[i-1] + K[i-1][w-wt[i-1]],  K[i-1][w])
+        } else {
+           K[i][w] = K[i-1][w]
+        } 
+      }
+    }
+    return K[val.length][W]
+  }
+
+  console.log(knapSack(50, [10, 20, 30], [60, 100, 120]))
+  </script>
+</html>

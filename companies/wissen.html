@@ -1,0 +1,24 @@
+<html>
+<script>
+setTimeout(() => {
+    ['div.1', 'div.2', 'div.3'].forEach(id => {
+        ['capture', 'bubble'].forEach(phase => {
+            document
+                .getElementById(id)
+                .addEventListener(
+                    'click',
+                    e => console.log(`${phase} click for ${id}`),
+                    phase === 'capture'
+                );
+        });
+    });
+}, 5000);
+</script>
+<body>
+ <div id="div.1">
+     <div id="div.2">
+        <div id="div.3">click me</div>
+     </div>
+ </div>
+</body>
+</html>

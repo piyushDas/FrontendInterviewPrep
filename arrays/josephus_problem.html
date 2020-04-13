@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Floodfill algo</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+  /*
+    Problem statement - save yourself from execution when only the last person
+    is released.
+     - there are n number of people standing in a circle
+     - evrytime kth person is executed, implying k-1 people are skipped
+     - find the safe position/index based on n and k
+  */
+
+  const no_of_people = 100
+  const start_interval = 13
+
+  const josephus = (n, k) => {
+    // if (!n || !k || n === 0 || k === 0 || window.isNaN(n) || window.isNaN(k) || !window.isFinite(k) || !window.isFinite(n)) {
+    //   return `Invalid inputs - ${n} ${k}`
+    // }
+
+    if (n === 1) {
+      return 1
+    } else {
+      console.log(`${n - 1} -->  n for next iteration` ) 
+      console.log(`${k % n + 1} --> position in this iteration`)
+      return (josephus(n - 1, k) + k-1) % n + 1
+    }
+  }
+  console.log(josephus(no_of_people, start_interval))
+  </script>
+</html>

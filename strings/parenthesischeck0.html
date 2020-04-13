@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    /* WRONG SOLUTION */
+    // function checkParenthesis(str){
+    //   var matchArr = ['[', ']', '{', '}', '(', ')'];
+    //   var touched = false;
+    //   var openCount = {
+    //     "square" : 0,
+    //     "round" : 0,
+    //     "curly" : 0
+    //   }
+    //   if(str.charAt(0) === ']' || str.charAt(0) === '}' || str.charAt(0) === ')'){
+    //     return "unbalanced";
+    //   }
+    //   for (var i = 0; i < str.length; i++) {
+    //     if(matchArr.indexOf(str.charAt(i)) > -1){
+    //       touched = true;
+    //       switch(str.charAt(i)){
+    //         case '[' :
+    //           openCount.square++;
+    //           break;
+    //         case '{' :
+    //           openCount.curly++;
+    //           break;
+    //         case '(' :
+    //           openCount.round++;
+    //           break;
+    //         case ']' :
+    //           openCount.square--;
+    //           break;
+    //         case '}' :
+    //           openCount.curly--;
+    //           break;
+    //         case ')' :
+    //           openCount.round--;
+    //           break;
+    //       }
+    //     }
+    //   }
+    //   if(!touched){
+    //     return "unbalanced";
+    //   }
+    //
+    //   if(openCount.square === 0 && openCount.round === 0 && openCount.curly === 0){
+    //     return "balanced";
+    //   } else {
+    //     return "unbalanced";
+    //   }
+    // }
+
+
+    function checkParenthesis(str){
+      var openArr = ['[', '{', '('];
+      var closeArr = [']', '}', ')'];
+      var sol = [];
+      var touched = false;
+      for (var i = 0; i < str.length; i++) {
+        if(openArr.indexOf(str.charAt(i)) > -1){
+          touched = true;
+          sol.push(str.charAt(i));
+        } else if(closeArr.indexOf(str.charAt(i)) > -1){
+          if((str.charAt(i) === "]" && sol[sol.length - 1] === "[") || (str.charAt(i) === "}" && sol[sol.length - 1] === "{") || (str.charAt(i) === ")" && sol[sol.length - 1] === "(")){
+            sol.pop();
+          }
+        }
+      }
+      if(!touched){
+        return "No brackets found in the given expression";
+      }
+      if(!sol.length){
+        return "balanced";
+      } else {
+        return "unbalanced";
+      }
+
+    }
+
+  </script>
+</html>

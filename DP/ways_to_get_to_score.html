@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var countWaysToReachAScore = n => {
+        /*
+            table[i] will store count of solutions for value i.
+            Initialize all table values as 0.
+        */
+
+        let table = []
+        table.length = n+1
+        for (let index = 0; index < n+1; index++) {
+            table[index] = 0 
+        }
+
+        // Base case (If given value is 0)
+        table[0] = 1
+
+        /*
+            One by one consider given 3 moves and update the
+            table[] values after the index greater than or equal \
+            to the value of the picked move.
+        */
+
+        for (let i = 3; i < n+1; i++) {
+            table[i] += table[i-3] 
+        }
+
+        for (let i = 5; i < n+1; i++) {
+            table[i] += table[i-5] 
+        }
+
+        for (let i = 10; i < n+1; i++) {
+            table[i] += table[i-10] 
+        }
+        console.log(table)
+        return table[n] 
+    }
+</script>
+
+</html>

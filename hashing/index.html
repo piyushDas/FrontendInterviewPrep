@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hashing</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    function CustomHash(limit = 30){
+      this.buckets = []
+      this.limit = limit
+    }
+
+    const hashFunc = (key, lim) => {
+      let hashedKey = (key * 5) % lim
+      return hashedKey
+    }
+
+    CustomHash.prototype.put = function(key, val) {
+      let values = [key, val]
+      let index = hashFunc(key, this.limit)
+      if (this.buckets[index]) {
+        let found = false;
+        for (let i = 0; i < this.buckets[index].length; i++) {
+          if (this.buckets[index][i][0] == key) {
+            this.buckets[index][i][1] = val
+            found = true
+            break
+          }
+        }
+
+        if (!found) {
+          this.buckets[index].push(values)
+        }
+      } else {
+        this.buckets[index] = [values]
+      }
+      return this
+    }
+  </script>
+</html>

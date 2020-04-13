@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIS</title>
+</head>
+<body> 
+</body>
+
+<script>
+
+    const getLongestIncreasingSubsequence = (arr, max) => {
+        // Recursive solution
+        if (arr.length == 1) {
+            return 1
+        }
+        let res = 1
+        let maxHere = 1
+
+        for (let i = 1; i < arr.length; i++) {
+            const newArr = arr.splice(0, i)
+            res = getLongestIncreasingSubsequence(newArr, max)
+            if (newArr[newArr.length-1] < arr[arr.length-1] && res + 1 > maxHere) {
+                maxHere = res + 1;
+            }
+        }
+
+        if (maxHere > max) {
+            max = maxHere
+        }
+
+        return maxHere
+    }
+</script>
+</html>

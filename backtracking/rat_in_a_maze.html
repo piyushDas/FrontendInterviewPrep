@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rat in a maze</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    /*
+      Problem: A Maze is given as N*N binary matrix of blocks
+      where source block is the upper left most block i.e., maze[0][0] and 
+      destination block is lower rightmost block i.e., maze[N-1][N-1]. 
+      
+      A rat starts from source and has to reach the destination. 
+      The rat can move only in two directions: 
+       - forward and
+       - down.
+
+       In the maze matrix, 
+       - 0 means the block is a dead end and
+       - 1 means the block can be used 
+       in the path from source to destination.
+    */
+
+    const inputMaze = [
+      [1, 0, 0, 0], 
+      [1, 1, 0, 1], 
+      [0, 1, 0, 0], 
+      [1, 1, 1, 1]
+    ]
+
+    const  solveMazeUtil = (maze, x, y, sol) => { 
+      // if (x, y is goal) return true 
+      if (x == N - 1 && y == N - 1) { 
+          sol[x][y] = 1; 
+          return true; 
+      } 
+
+      // Check if maze[x][y] is valid 
+      if (isSafe(maze, x, y) == true) { 
+        // mark x, y as part of solution path 
+        sol[x][y] = 1
+        /* Move forward in x direction */
+        if (solveMazeUtil(maze, x + 1, y, sol)) {
+          return true
+        }
+
+        /* If moving in x direction doesn't give  
+        solution then Move down in y direction */
+        if (solveMazeUtil(maze, x, y + 1, sol)){
+          return true
+        } 
+        /* If none of the above movements works then  
+        BACKTRACK: unmark x, y as part of solution  
+        path */
+        sol[x][y] = 0
+        return false 
+      }
+      return false
+    }
+
+    const solveMaze = maze => {
+      let sol = [[]]
+      if (solveMazeUtil(maze, 0, 0, sol) == false) { 
+        console.log("Solution doesn't exist")
+        return false
+      }
+      console.log(sol)
+      return true
+    }
+    solveMaze(inputMaze)
+  </script>
+</html>

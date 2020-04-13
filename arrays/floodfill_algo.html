@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Floodfill algo</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+  /*
+    Problem statement - given a 2D screen, implement fill() function
+     - To break it down screen[x][y] coordinates 
+     - the x,y coords/indices contain certain value - indicating a color
+     - replace this value with the new value
+     - now recursively call this function for all adjacent coords which had previous color
+  */
+
+  const screen = [
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 0, 0],
+    [1, 0, 0, 1, 1, 0, 1, 1],
+    [1, 2, 2, 2, 2, 0, 1, 0],
+    [1, 1, 1, 2, 2, 0, 1, 0],
+    [1, 1, 1, 2, 2, 2, 2, 0],
+    [1, 1, 1, 1, 1, 2, 1, 1],
+    [1, 1, 1, 1, 1, 2, 2, 1],
+  ]
+  const x = 4
+  const y = 4
+  const newColor = 3
+
+  const oldColor = screen[x][y]
+  console.log(oldColor)
+  console.log(screen)
+  const paintScreen = (arr, x, y,  newCol, oldCol) => {
+      // Boundary condition check for validity of coordinates to fall in the screen
+      if (x < 0 || y < 0 || x > arr.length - 1 || y > arr[x].length - 1) {
+        return
+      }
+
+      // Painting coordinates that only had old color
+      if (arr[x][y] !== oldCol) {
+        return
+      }
+      arr[x][y] = newCol
+
+      // Call the same function for the adjacent coords
+      // The same can also include diagonally adjacent coordinates
+      paintScreen(arr, x+1, y, newCol, oldCol)
+      paintScreen(arr, x-1, y, newCol, oldCol)
+      paintScreen(arr, x, y+1, newCol, oldCol)
+      paintScreen(arr, x, y-1, newCol, oldCol)
+  }
+  paintScreen(screen, x, y, newColor, oldColor)
+  console.log(newColor)
+  console.log(screen)
+  </script>
+</html>

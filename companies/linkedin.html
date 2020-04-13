@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Arrows</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    /*
+      Arrows are a function shorthand using the => syntax.
+      They support both 
+       - statement block bodies as well as 
+       - expression bodies 
+       which return the value of the expression. 
+       Unlike functions, arrows share the same lexical this as their surrounding code.
+    */
+
+    function funWithAnagrams(text) {
+    // Write your code here
+    let result = []
+    let temp = []
+    for (const word of text) {
+        let testWord = word.split('').sort().join('')
+        if (temp.indexOf(testWord) < 0) {
+            result.push(word)
+            temp.push(testWord)
+        }
+    }
+    return result.sort()
+    }
+
+function maximumOccurringCharacter(text) {
+    // Write your code here
+    const counter = []
+    for (const letter of text) {
+    if (counter[letter]) {
+        counter[letter] += 1
+    } else {
+        counter[letter] = 1
+    }
+    }
+    let max = 0
+    let returnChar = '' 
+    for (const key in counter) {
+    if (counter[key] > max){
+        max = counter[key]
+        returnChar = key
+    }
+    }
+    return returnChar
+}
+
+function raisingPower(a) {
+    const modPow = (num, e, m) => {
+        let result = 1;
+        num = num % m;
+        while(e>0){
+            if(e&1){
+                result = (result*num)%m;
+            }
+            e = Math.floor(e/2);
+            num =(num*num)%m;
+        }
+        return result;
+    };
+
+    let minIndex = 1000001;
+    let maxNum = -1;
+    let m = 1000000007;
+    for(let i=0;i<(a.length - 1);i++){
+        let fi = modPow(a[i],a[i+1],m);
+        if(fi>maxNum){
+            maxNum = fi;
+            minIndex = i;
+        }
+    }
+    return minIndex+1;
+}
+
+
+function numSpecialChar(str, charValue) {
+    let count = 0;
+    charValue = charValue.split('');
+    for(let i = 0; i < str.length; i++) {
+        if(charValue[str.charCodeAt(i)-97] == '0') {
+            count++;
+        }
+    }
+    return count;
+}
+
+function getSpecialSubstring(s, k, charValue) {
+    // Write your code here
+    let maxLen = 0
+    for(let len = s.length; len >= k; len--){ 
+        for (let i = 0; i < s.length - len + 1; i++) {
+            let normalCount = numSpecialChar(s.substr(i, len), charValue)
+            if(normalCount == k) {
+                if(len > maxLen){
+                    maxLen = len;
+                }
+            }
+        }
+    }
+    return maxLen
+}
+  </script>
+</html>

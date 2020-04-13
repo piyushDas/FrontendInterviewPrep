@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rearrange</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+  /*
+    Given an array of integer values,
+    and an array of their corresponding final positions,
+    rearrange the array accordingly
+  */
+	function reassignPos(numArr, posArr)
+	{
+
+    //Using auxiliary space
+    // var result = numArr.slice();
+    // for (var i = 0; i < numArr.length; i++) {
+    //   result[posArr[i]] = numArr[i];
+    // }
+
+    /*
+      without using auxiliary spaces
+      swapping numbers to their given position
+    */
+
+    for (var i = 0; i < posArr.length; i++) {
+      numArr[i] = swap(numArr[posArr[i]], numArr[i])[0];
+      numArr[posArr[i]] = swap(numArr[posArr[i]], numArr[i])[1];
+
+      posArr[i] = swap(posArr[posArr[i]], posArr[i])[0];
+      posArr[posArr[i]] = swap(posArr[posArr[i]], posArr[i])[1];
+      console.log(numArr[i] + " "+ numArr[posArr[i]])
+    }
+
+
+    return numArr;
+	}
+
+  function swap(a,b){
+    return [b, a];
+  }
+
+  var numArr = [ 1, 2, 12, 8, 4 ],
+  posArr = [1, 3, 0, 4, 2]; //sol = [12,1,4,2,8]
+  console.log(reassignPos(numArr, posArr));
+
+  </script>
+</html>

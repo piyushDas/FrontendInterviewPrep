@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Arrows</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    /*
+      Arrows are a function shorthand using the => syntax.
+      They support both 
+       - statement block bodies as well as 
+       - expression bodies 
+       which return the value of the expression. 
+       Unlike functions, arrows share the same lexical this as their surrounding code.
+    */
+
+    function functionInES5() {
+      console.log("called functionInES5")
+    }
+
+    const functionInES6 = () => {
+      console.log("called functionInES6")
+    }
+
+    const functionInES6WithSingleParam = singleParam => {
+      console.log(`called functionInES6 with param ${singleParam}`)
+    }
+
+    const functionInES6WithParams = (param1, param2) => {
+      console.log(`called functionInES6 with params ${param1} and ${param2}`)
+    }
+
+    const functionInES6ReturningExpression = (param1, param2) =>
+      console.log(`called functionInES6 with params ${param1} and ${param2}`)
+
+    const functionInES6ReturningObjectLiteral = param1 => {
+      console.log(`called functionInES6 `)
+    }
+
+    const functionInES6 = () => {
+      console.log("called functionInES6")
+    }
+  </script>
+</html>

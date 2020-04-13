@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Promise</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    /*
+      Reference - https://www.freecodecamp.org/news/how-javascript-promises-actually-work-from-the-inside-out-76698bb7210b/
+      - https://blog.bitsrc.io/6-ways-to-implement-a-promise-in-javascript-9238aec9c17b
+      - https://scotch.io/tutorials/javascript-promises-for-dummies
+    */
+
+    const someConditional = true
+
+    // Promise
+    const examplePromise = new Promise(
+      (resolve, reject) => { // fat arrow
+        if (someConditional) {
+            const someData = {
+                name: "Piyush"
+            };
+            resolve(someData);
+        } else {
+            const reason = new Error('Failed promise');
+            reject(reason);
+        }
+      }
+    )
+
+    const anotherOne = function (someData) {
+      if (someData && someData.name) {
+        const message = `Just some other data that ${someData.name} had set`
+        return Promise.resolve(message);
+      } else {
+        return Promise.reject("First promise didn't get fulfilled");
+      }
+    }
+
+    // call our promise
+    const consumingPromise = function () {
+      examplePromise
+        .then(anotherOne)
+        .then(fulfilled => console.log(fulfilled)) 
+        .catch(error => console.log(error.message))
+    }
+
+    // consumingPromise()
+
+    /* 
+      Illustrates that first is  onFullfilled handler
+      while the second callback handles what happens on error
+    */
+    // anotherOne()
+    //   .then(
+    //     res => console.log(res), err => console.log(err)
+    //   )
+
+
+    /*
+      Let's try same code with ES7
+
+    
+    */
+
+    const someConditional_case2 = true;
+
+    // Promise
+    const examplePromise_case2 = new Promise(
+      (resolve, reject) => {
+        if (someConditional_case2) {
+            const someData_case2 = {
+                name: 'Shivani'
+            }
+            resolve(someData_case2)
+        } else {
+            const reason = new Error('Promise failed and made me feel miserable')
+            reject(reason)
+        }
+      }
+    )
+
+    // 2nd promise
+    async function anotherOne_case2(someData_case2) {
+      return new Promise(
+          (resolve, reject) => {
+              var message = `Becasue I had to use another name so I used ${someData_case2.name}'s name`
+              resolve(message)
+          }
+      )
+    }
+
+    // call our promise
+    async function consumingPromise_case2() {
+      try {
+          console.log('before the examplePromise is called');
+
+          let someData_case2 = await examplePromise_case2;
+          let message = await anotherOne_case2(someData_case2);
+
+          console.log(message);
+          console.log('after anotherOne is called');
+      }
+      catch (error) {
+          console.log(error.message);
+      }
+    }
+
+    (async () => {
+      await consumingPromise_case2();
+    })();
+  </script>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Array equality</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+  /*
+    Problem statement - compare for equality of arrays
+     - given two, arrays, both should contain the same elements
+     - the order of elements may be different
+     - if the values are repeated in one,
+       should have exactly same repetition in the other
+  */
+  
+  const arr1 = [1, 2, 3, 2, 1]
+  const arr2 = [2, 1, 3, 3, 2]
+  // OPTION 1 - sort the two arrays and compare for exact match
+    console.log("Using sort for both arrays")
+    console.log(`First array - ${arr1.sort().toString()}`)
+    console.log(`Second array - ${arr2.sort().toString()}`)
+    console.log(arr1.sort().toString() === arr2.sort().toString())
+
+  // OPTION 2 - create hash/object(in js) which keeps count of elems
+    const counterObj = {}
+    for (let index = 0; index < arr1.length; index++) {
+      if (counterObj[arr1[index]]) {
+        counterObj[arr1[index]] += 1
+      } else {
+        counterObj[arr1[index]] = 1
+      }
+    }
+
+    for (let index = 0; index < arr2.length; index++) {
+      if (counterObj[arr2[index]]) {
+        counterObj[arr2[index]] -= 1
+        if (counterObj[arr2[index]] === 0) {
+          delete counterObj[arr2[index]]
+        }
+      } else {
+        counterObj[arr2[index]] = 1
+      }
+    }
+    console.log("Using counterObj/Hash for both arrays")
+    console.log(counterObj)
+    console.log(Object.keys(counterObj).length === 0)
+  </script>
+</html>

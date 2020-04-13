@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Quick sort</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+  /*
+    Quick sort - 
+    This algorithm is a Divide and Conquer algorithm
+    It picks an element as pivot and
+    partitions the given array around the picked pivot.
+      - Always pick first element as pivot.
+      - Always pick last element as pivot (implemented below)
+      - Pick a random element as pivot.
+      - Pick median as pivot.
+     
+    It takes the pivot and
+    places the pivot element at its correct position in sorted array,
+    and places all smaller (smaller than pivot) to left of pivot
+    and all greater elements to right of pivot
+
+    T(n) = T(k) + T(n-k-1) + ø(n)
+    first two terms are for two recursive calls
+    last term is for the partition process
+
+    Best Case: (nLogn) The best case occurs
+    when the partition process always picks the middle element as pivot.
+    T(n) = 2T(n/2) + ø(n)
+    Worst Case: (n*n) The worst case occurs
+    when the partition process always picks greatest or smallest element as pivot.
+    T(n) = T(n-1) + ø(n)
+    Average Case: O(nLogn)
+  */
+  const unsortedArray = [1, 32, 12, 14, 5, 6, 23, 19, 7]
+
+  const partition = (arr, low, high) => { 
+    const pivot = arr[high]
+    let i = (low-1) // index of smaller element 
+    for (let j=low; j<high; j++) { 
+      // If current element is smaller than the pivot 
+      if (arr[j] < pivot){ 
+        i++; 
+        // swap arr[i] and arr[j] 
+        let temp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = temp
+      } 
+    }
+    // swap arr[i+1] and arr[high] (or pivot) 
+    let temp = arr[i+1]; 
+    arr[i+1] = arr[high]; 
+    arr[high] = temp; 
+    return i+1; 
+  } 
+
+  const quickSort = (arr, low, high) => {
+    console.log(arr)
+    if (low < high) { 
+      /* 
+        pi is partitioning index, arr[pi] is  
+        now at right place
+      */
+      const pi = partition(arr, low, high); 
+      /* 
+        Recursively sort elements before 
+        partition and after partition 
+      */
+      quickSort(arr, low, pi-1); 
+      quickSort(arr, pi+1, high); 
+    } 
+    console.log(arr)
+  }
+  quickSort(unsortedArray)
+  /*
+    In 3 Way QuickSort, an array arr[l..r] is divided in 3 parts:
+    a) arr[l..i] elements less than pivot.
+    b) arr[i+1..j-1] elements equal to pivot.
+    c) arr[j..r] elements greater than pivot.
+  */
+  </script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>isSumOfTwo</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+  /*
+    Given an array of integers,
+    find  a pair of numbers that is equal to the summary
+    and return a boolean value if sum is present
+  */
+	function isSumOfTwo(numArr, sum)
+	{
+
+    //If the array is unsorted, will sort them first
+    numArr.sort(function(a, b){return a-b}); //This is mostly quick sort
+    lastInd = numArr.length - 1;
+    firstind = 0;
+
+    if(numArr && !numArr.length){
+      return false;
+    }
+    return checkForSum(numArr, firstind, lastInd, sum);
+	}
+
+  function checkForSum(numArr, firstind, lastInd, sum ){
+    if(lastInd == firstind){
+      return false;
+    }
+    if(numArr[firstind] + numArr[lastInd] > sum){
+      return checkForSum(numArr, firstind, --lastInd, sum);
+    } else if(numArr[firstind] + numArr[lastInd] < sum){
+      return checkForSum(numArr, ++firstind, lastInd, sum);
+    } else {
+      return true;
+      // return firstIndex and lastIndex
+    }
+  }
+
+  var numArr = [ 1, 2, 12, 8, 4 ];
+  console.log(isSumOfTwo(numArr, 6));
+
+  </script>
+</html>
