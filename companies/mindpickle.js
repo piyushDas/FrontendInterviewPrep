@@ -92,9 +92,6 @@ Function.prototype.customBind = function(obj, ...args){
   a.getName.customBind(b, "xyz")("abc");
   
   // console.log.bind(console, 1, 2)(3, 4)
-  
-
-
   Function.prototype.apply2 = function(){
     let ctx = arguments[0];
     let args = arguments[1];
