@@ -1,0 +1,119 @@
+Angular
+- Routing
+- Components
+- RxJs
+- Event Handling
+- service
+- directive
+- content projection
+- pipe
+- ngModule structure
+- doCheck vs onChange
+- Subjects vs Observables
+- Change detection strategy
+- root routing vs child routing
+- retry in API call
+
+
+Javscript
+- JS function like map, mergeMap, switchMap
+- closures
+- Event loop
+- Event handling - bubbling and capturing
+- callbacks
+- promises (compare with async and await)
+- async/await
+- toString function explanation
+- Scoping
+- Prototypes
+- _proto and prototype
+- multiple inheritance
+- classes
+- polymorphism in js
+- static variables in js
+- Call vs apply
+- generators
+- garbage collection in js
+- Deep copy (do this)
+- implement infinite scroll
+- implement accordion
+- function vs arrow
+- fallback reduce function
+- Object using Object.create(null) , does this object take any memory 
+- let vs var
+- spread and rest
+- random no between x and y
+- reverse a string
+- sort arr in descending order
+- count how many instances of Object has been created
+- call one API after another using the response of the previous API
+- Staggering Api calls 3 first then 1 by 1
+- service workers - communincating between them
+- folding an array from middle [5, 6, 4, 4, 5] ==> [10, 10, 4]
+- add(1)(2)(3)
+- array find numbers divisible by 3
+- largest word from string and if the re are two or more words that are the same length return the first word from the string
+- millions of records how to show on page
+- realtime data update
+- constructor overloading in js
+- symbol vs object
+- scan method Observables
+- hot vs cold Observables
+- life cycle 
+- interfaces
+- insert at the start of the array 
+
+
+HTML - CSS
+- selectors
+- length types - px, %, em, rem
+- span vs divisible
+- flex, grid
+- mixins
+- input field - search as right bg
+- position property
+
+React
+ - virtual DOM
+ - State management
+ - context and useContext
+ - Fragments
+ - Hooks
+ - Provider
+ - Refs
+ - Router
+ - react carousel
+ - react infinite scroll
+ - higher order retry function
+ - JSX
+ - API call in ajax component
+ - using hooks inside class Components
+ - componentDidMount and componentWillUnmount
+ - pass data from child to parent
+ - what are hooks
+ - Immutability
+
+
+ Redux
+ - what is Redux
+ - connect a component with redux
+ - reducers with async tasks
+ - redux architecture
+
+
+
+ Others
+ - writing unit test cases
+ - JIT/AOT
+ - load balancer
+ - Principles of REST Api
+ - factory design pattern
+ - Dependency Injection
+ - singleton design pattern
+ - maximum profit in a data set 
+ - brute force algorithm
+ - PWA
+ - big O notation in prog
+ - Rollups
+ - webpack
+ - Tree shaking
