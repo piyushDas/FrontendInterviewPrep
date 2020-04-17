@@ -16,20 +16,20 @@ Angular
 
 
 Javscript
-- JS function like map, mergeMap, switchMap
-- closures
-- Event loop
+- JS function like map, mergeMap, switchMap ----------------- DONE
+- closures -------------------------------------------------- DONE
+- Event loop ------------------------------------------------ DONE
 - Event handling - bubbling and capturing
-- callbacks
-- promises (compare with async and await)
+- callbacks ------------------------------------------------- DONE
+- promises (compare with async and await) ------------------- DONE
 - async/await
-- toString function explanation
+- toString function explanation ----------------------------- DONE
 - Scoping
 - Prototypes
-- _proto and prototype
-- multiple inheritance
+- _proto and prototype -------------------------------------- DONE
+- multiple inheritance -------------------------------------- 
 - classes
-- polymorphism in js
+- polymorphism in js ---------------------------------------- DONE
 - static variables in js
 - Call vs apply
 - generators
@@ -103,17 +103,17 @@ React
 
 
  Others
- - writing unit test cases
- - JIT/AOT
- - load balancer
- - Principles of REST Api
- - factory design pattern
- - Dependency Injection
- - singleton design pattern
+ - writing unit test cases --------------- DONE
+ - JIT/AOT ------------------------------- DONE
+ - load balancer ------------------------- DONE
+ - Principles of REST Api ---------------- DONE
+ - factory design pattern ---------------- DONE
+ - Dependency Injection ------------------ DONE
+ - singleton design pattern -------------- DONE
  - maximum profit in a data set 
  - brute force algorithm
  - PWA
  - big O notation in prog
  - Rollups
- - webpack
- - Tree shaking
+ - webpack ------------------------------- DONE
+ - Tree shaking -------------------------- DONE
