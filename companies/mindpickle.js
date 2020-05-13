@@ -102,3 +102,20 @@ Function.prototype.customBind = function(obj, ...args){
     }
     return sum()
  }
+
+
+
+ /**
+  * Actual solution 
+ */
+
+
+Function.prototype.customBind = function(context, ...args){
+  let that = this;
+  return function(){
+    context.tempFunction = that;
+    let returnVal = context.tempFunction(...args, ...arguments);
+    delete context.tempFunction;
+    return returnVal
+  }
+}
